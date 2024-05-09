@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //needs
+    public GameObject water;
+    //random places to go
+    public GameObject Spot1;
+    public GameObject Spot2;
+    public GameObject Spot3;
+    //stats
+    private float health;
+    private float maxHealth;
+    public int currentHealth;
+    private float force;
+    private float scared;
+    private float speed;
+    private float hungry; void Start()
     {
         
     }
