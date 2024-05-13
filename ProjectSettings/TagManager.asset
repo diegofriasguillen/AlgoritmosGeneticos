@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cat
+  - Chicken
+  - Penguin
+  - Dog
+  - Deer
+  - Tiger
   layers:
   - Default
   - TransparentFX

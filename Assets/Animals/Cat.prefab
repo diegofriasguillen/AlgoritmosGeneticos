@@ -64,20 +64,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1076de1f3cbb794fb3362efe98adc0d, type: 3}
+      propertyPath: m_TagString
+      value: Cat
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1076de1f3cbb794fb3362efe98adc0d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4565697847821416750}
+      addedObject: {fileID: 7023168612871697874}
   m_SourcePrefab: {fileID: 100100000, guid: c1076de1f3cbb794fb3362efe98adc0d, type: 3}
 --- !u!1 &3874157355333867332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c1076de1f3cbb794fb3362efe98adc0d, type: 3}
   m_PrefabInstance: {fileID: 4108035232344140309}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4565697847821416750
+--- !u!114 &7023168612871697874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,12 +90,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3874157355333867332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3a0a98a4b3c3143bb9b63951341a88, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e1f857b560b9fe439946f835073bfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  food: {fileID: 0}
-  water: {fileID: 0}
-  Spot1: {fileID: 0}
-  Spot2: {fileID: 0}
-  Spot3: {fileID: 0}
-  currentHealth: 0
+  animalType: 2
+  maxHealth: 100
+  maxAge: 20
+  reproductionCooldown: 180
+  reproductionDistance: 1

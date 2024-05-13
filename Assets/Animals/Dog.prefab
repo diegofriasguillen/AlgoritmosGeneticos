@@ -52,20 +52,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
+      propertyPath: m_TagString
+      value: Dog
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7826178091388260793}
+      addedObject: {fileID: 8704088832694489974}
   m_SourcePrefab: {fileID: 100100000, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
 --- !u!1 &3403247036443300575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
   m_PrefabInstance: {fileID: 2592853992175808398}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7826178091388260793
+--- !u!114 &8704088832694489974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,11 +78,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3403247036443300575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521b62e53ff7e9240b00ada0b985a8c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e1f857b560b9fe439946f835073bfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  water: {fileID: 0}
-  Spot1: {fileID: 0}
-  Spot2: {fileID: 0}
-  Spot3: {fileID: 0}
-  currentHealth: 0
+  animalType: 3
+  maxHealth: 100
+  maxAge: 20
+  reproductionCooldown: 10
+  reproductionDistance: 1

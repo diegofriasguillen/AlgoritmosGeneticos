@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
 
-public class Animals : MonoBehaviour
+public class BigAnimals : MonoBehaviour
 {
     //health
     public float animalsHealth;
@@ -51,7 +52,13 @@ public class Animals : MonoBehaviour
 
     private void Flee()
     {
+        //necesito adaptar esta lógica para que funcione bien. 
 
+        //Vector3 fleeDirection = transform.position - player.position;
+        //fleeDirection.y = 0;
+        //fleeDirection.Normalize();
+        //Vector3 fleePoint = transform.position + fleeDirection * 8f;
+        //agent.SetDestination(fleePoint);
     }
 
     private void MakingLove()
