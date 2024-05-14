@@ -86,3 +86,11 @@ MonoBehaviour:
   maxAge: 20
   reproductionCooldown: 10
   reproductionDistance: 1
+  movementSpeed: 5
+  fleeDistance: 10
+  detectionRadius: 10
+  destinations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

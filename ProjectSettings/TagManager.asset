@@ -10,6 +10,8 @@ TagManager:
   - Dog
   - Deer
   - Tiger
+  - Plant
+  - Spot
   layers:
   - Default
   - TransparentFX

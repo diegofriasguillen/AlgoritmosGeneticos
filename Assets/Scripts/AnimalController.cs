@@ -12,7 +12,7 @@ public class AnimalController : MonoBehaviour
     public float reproductionCooldown = 10f;
 
     private float currentHealth;
-    private float currentAge;
+    public float currentAge;
     private bool canReproduce = true;
     private GameController gameController;
 
@@ -20,9 +20,14 @@ public class AnimalController : MonoBehaviour
 
     public float reproductionDistance = 1f;
 
-    public float movementSpeed = 5f; 
-    public float fleeDistance = 10f; 
+    public float movementSpeed = 5f;
+    public float fleeDistance = 10f;
     public float detectionRadius = 10f;
+
+    public Genes genes;
+
+    public List<GameObject> destinations;
+    private int currentDestinationIndex = 0;
 
     void Start()
     {
@@ -31,11 +36,14 @@ public class AnimalController : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
 
         homePosition = transform.position;
+
+        genes = new Genes();
+
+        SetNextDestination();
     }
 
     void Update()
     {
-        // Implement behavior logic based on animal type
         switch (animalType)
         {
             case AnimalType.Chicken:
@@ -57,6 +65,8 @@ public class AnimalController : MonoBehaviour
                 TigerBehaviour();
                 break;
         }
+
+        MoveTowardsDestination();
     }
 
     void ChickenBehaviour()
@@ -73,7 +83,7 @@ public class AnimalController : MonoBehaviour
         FindFood("Chicken");
         FindFood("Penguin");
     }
-    
+
     void DogBehaviour()
     {
         FindFood("Cat");
@@ -97,6 +107,28 @@ public class AnimalController : MonoBehaviour
         FindFood("Deer");
         FindFood("Penguin");
     }
+
+    void MoveTowardsDestination()
+    {
+        if (destinations.Count == 0) return; 
+
+        Vector3 currentDestination = destinations[currentDestinationIndex].transform.position;
+
+        Vector3 moveDirection = (currentDestination - transform.position).normalized;
+
+        transform.position += moveDirection * movementSpeed * Time.deltaTime;
+
+        if (Vector3.Distance(transform.position, currentDestination) < 0.1f)
+        {
+            SetNextDestination();
+        }
+    }
+
+    void SetNextDestination()
+    {
+        // Incrementar el índice del destino actual
+        currentDestinationIndex = (currentDestinationIndex + 1) % destinations.Count;
+    }
     void FindFood(string foodTag)
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
@@ -104,11 +136,11 @@ public class AnimalController : MonoBehaviour
         {
             if (collider.CompareTag(foodTag))
             {
-                MoveTowardsTarget(collider.transform.position);
+                MoveTowardsDestination();
                 return;
             }
         }
-        MoveTowardsTarget(homePosition);
+        MoveTowardsDestination();
     }
 
     void FleeFromPredators(string predatorTag)
@@ -124,17 +156,12 @@ public class AnimalController : MonoBehaviour
                 fleeDirection.y = 0; // Mantener la misma altura
                 fleeDirection.Normalize();
                 Vector3 fleePoint = transform.position + fleeDirection * fleeDistance;
-                MoveTowardsTarget(fleePoint);
+                MoveTowardsDestination();
                 return;
             }
         }
     }
 
-    void MoveTowardsTarget(Vector3 targetPosition)
-    {
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
-        transform.position += moveDirection * movementSpeed * Time.deltaTime;
-    }
     public void Eat(GameObject food)
     {
         switch (animalType)
@@ -208,7 +235,7 @@ public class AnimalController : MonoBehaviour
     {
         while (currentHealth < maxHealth)
         {
-            yield return new WaitForSeconds(1.5f); 
+            yield return new WaitForSeconds(1.5f);
             currentHealth += healAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
@@ -237,10 +264,9 @@ public class AnimalController : MonoBehaviour
 
         if (distance <= reproductionDistance)
         {
+            Genes childGenes = new Genes(genes, partnerAnimal.genes);
 
-            gameController.SpawnOffspring(animalType, transform.position);
-            gameController.SpawnOffspring(animalType, partner.transform.position);
-
+            gameController.SpawnOffspring(animalType, transform.position, childGenes);
             canReproduce = false;
             partnerAnimal.canReproduce = false;
 
@@ -262,5 +288,10 @@ public class AnimalController : MonoBehaviour
     public bool IsOld(float maxAge = 20)
     {
         return currentAge >= maxAge;
+    }
+
+    public void SetGenes(Genes newGenes)
+    {
+        genes = newGenes;
     }
 }
