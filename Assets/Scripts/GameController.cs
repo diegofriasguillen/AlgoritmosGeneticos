@@ -69,6 +69,9 @@ public class GameController : MonoBehaviour
         {
             yield return new WaitForSeconds(reproductionInterval);
 
+            // Crear una lista temporal para almacenar los animales que deben ser eliminados
+            List<GameObject> animalsToRemove = new List<GameObject>();
+
             foreach (GameObject animal in animals)
             {
                 AnimalController animalController = animal.GetComponent<AnimalController>();
@@ -87,10 +90,16 @@ public class GameController : MonoBehaviour
                     animalController.IncreaseAge();
                     if (animalController.IsOld(maxAnimalAge))
                     {
-                        animals.Remove(animal);
+                        animalsToRemove.Add(animal);
                         Destroy(animal);
                     }
                 }
+            }
+
+            // Eliminar los animales que deben ser eliminados de la lista principal
+            foreach (GameObject animalToRemove in animalsToRemove)
+            {
+                animals.Remove(animalToRemove);
             }
         }
     }
@@ -122,5 +131,10 @@ public class GameController : MonoBehaviour
         animalController.SetGenes(genes);
 
         animals.Add(offspring);
+    }
+
+    public void RemoveAnimal(GameObject animal)
+    {
+        animals.Remove(animal);
     }
 }
