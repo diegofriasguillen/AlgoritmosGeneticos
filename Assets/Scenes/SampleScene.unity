@@ -1739,7 +1739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8704088832694489974, guid: 77b6d798ad638df4c8c660a6880102d2, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8704088832694489974, guid: 77b6d798ad638df4c8c660a6880102d2, type: 3}
       propertyPath: destinationChangeInterval
@@ -1875,7 +1875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7023168612871697874, guid: dbad6b2af828ee0459f34ddb9a9730c5, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7023168612871697874, guid: dbad6b2af828ee0459f34ddb9a9730c5, type: 3}
       propertyPath: destinations.Array.size
@@ -2512,7 +2512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2532521361878992525, guid: 3939fdd9a17cb0d4aa22da22b8a87345, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2532521361878992525, guid: 3939fdd9a17cb0d4aa22da22b8a87345, type: 3}
       propertyPath: destinationChangeInterval
@@ -2766,7 +2766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5680866693829511419, guid: a4174bb12d8ca874e9e786056848864d, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5680866693829511419, guid: a4174bb12d8ca874e9e786056848864d, type: 3}
       propertyPath: destinationChangeInterval
@@ -2869,7 +2869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763053725784147100, guid: 00e045040df89ff4eacdebf212d2a04c, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 763053725784147100, guid: 00e045040df89ff4eacdebf212d2a04c, type: 3}
       propertyPath: destinationChangeInterval
@@ -2989,7 +2989,7 @@ MonoBehaviour:
   - {fileID: 1062695206}
   - {fileID: 947071058}
   - {fileID: 882544602}
-  reproductionInterval: 60
+  reproductionInterval: 10
   maxAnimalAge: 20
   reproductionPoints:
   - {fileID: 1313504166}
@@ -7552,7 +7552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1590277139041164162, guid: 15a0a424d9d5409409a6d741a401db44, type: 3}
       propertyPath: reproductionCooldown
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1590277139041164162, guid: 15a0a424d9d5409409a6d741a401db44, type: 3}
       propertyPath: destinationChangeInterval

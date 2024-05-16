@@ -87,15 +87,16 @@ public class AnimalController : MonoBehaviour
         if (IsOld())
         {
             Die();
+            Debug.Log("c murio");
             return;
         }
     }
 
+    //behaviour
     void ChickenBehaviour()
     {
         FleeFromPredators();
     }
-
     void PenguinBehaviour()
     {
         GameObject prey = FindPrey();
@@ -108,7 +109,6 @@ public class AnimalController : MonoBehaviour
             FleeFromPredators();
         }
     }
-
     void CatBehaviour()
     {
         GameObject prey = FindPrey();
@@ -121,7 +121,6 @@ public class AnimalController : MonoBehaviour
             FleeFromPredators();
         }
     }
-
     void DogBehaviour()
     {
         GameObject prey = FindPrey();
@@ -147,7 +146,6 @@ public class AnimalController : MonoBehaviour
             FleeFromPredators();
         }
     }
-
     void TigerBehaviour()
     {
         GameObject prey = FindPrey();
@@ -158,12 +156,12 @@ public class AnimalController : MonoBehaviour
         }
     }
 
+    //movetoplaces
     void MoveTowardsDestination(Vector3 targetPosition)
     {
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
     }
-
     void CheckDestinationChange()
     {
         timeSinceLastDestinationChange += Time.deltaTime;
@@ -173,17 +171,20 @@ public class AnimalController : MonoBehaviour
             timeSinceLastDestinationChange = 0f;
         }
     }
-
     void SetNextDestination()
     {
         currentDestinationIndex = (currentDestinationIndex + 1) % destinations.Count;
     }
+    void SetRandomDestination()
+    {
+        currentDestinationIndex = Random.Range(0, destinations.Count);
+    }
 
+    //hunting
     private bool IsPredator()
     {
         return animalType == AnimalType.Cat || animalType == AnimalType.Penguin || animalType == AnimalType.Dog ||animalType == AnimalType.Deer|| animalType == AnimalType.Tiger;
     }
-
     private GameObject FindPrey()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
@@ -195,13 +196,13 @@ public class AnimalController : MonoBehaviour
                 {
                     currentHunger = 0f;
                     Destroy(collider.gameObject);
+                    Debug.Log("secomio");
                     return collider.gameObject;
                 }
             }
         }
         return null;
     }
-
     bool IsPrey(string tag)
     {
         switch (animalType)
@@ -222,7 +223,7 @@ public class AnimalController : MonoBehaviour
                 return false;
         }
     }
-
+    //runbitchrun
     void FleeFromPredators()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
@@ -241,11 +242,11 @@ public class AnimalController : MonoBehaviour
         }
     }
 
+    //peoplecalifornication
     public bool CanReproduce()
     {
         return canReproduce;
     }
-
     public void Reproduce(GameObject partner)
     {
         if (!CanReproduce()) return;
@@ -259,7 +260,10 @@ public class AnimalController : MonoBehaviour
             StartCoroutine(MoveToHomeAndReproduce(partnerAnimal));
         }
     }
-
+    public void SetGenes(Genes newGenes)
+    {
+        genes = newGenes;
+    }
     private IEnumerator MoveToHomeAndReproduce(AnimalController partnerAnimal)
     {
         Vector3 partnerHomePosition = partnerAnimal.homePosition;
@@ -283,36 +287,23 @@ public class AnimalController : MonoBehaviour
         StartCoroutine(ResetReproductionCooldown());
         partnerAnimal.StartCoroutine(partnerAnimal.ResetReproductionCooldown());
     }
-
     private IEnumerator ResetReproductionCooldown()
     {
         yield return new WaitForSeconds(reproductionCooldown);
         canReproduce = true;
     }
 
+    //getoldthendiemothefucker
     public void IncreaseAge()
     {
         currentAge += Time.deltaTime;
     }
-
     public bool IsOld()
     {
         return currentAge >= maxAge;
     }
-
-    void SetRandomDestination()
-    {
-        currentDestinationIndex = Random.Range(0, destinations.Count);
-    }
-
-    public void SetGenes(Genes newGenes)
-    {
-        genes = newGenes;
-    }
-
     public void Die()
     {
-        gameController.RemoveAnimal(gameObject);
         Destroy(gameObject);
     }
 }

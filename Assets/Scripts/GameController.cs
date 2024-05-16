@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public GameObject[] animalPrefabs;
     public Transform[] spawnPoints;
+
     public float reproductionInterval = 15f;
     public float maxAnimalAge = 100f;
 
@@ -27,7 +28,7 @@ public class GameController : MonoBehaviour
                 GameObject animalPrefab = animalPrefabs[i];
                 AnimalController.AnimalType animalType = (AnimalController.AnimalType)i;
 
-                if (animalCounts[animalType] < 2)
+                if (animalCounts[animalType] < 4)
                 {
                     animalCounts[animalType]++;
                     Vector3 position = spawnPoint.position;
@@ -46,6 +47,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(ReproductionRoutine());
     }
 
+    //peoplecalifornication
     IEnumerator ReproductionRoutine()
     {
         while (true)
@@ -66,12 +68,6 @@ public class GameController : MonoBehaviour
                             animalController.Reproduce(partner);
                         }
                     }
-
-                    animalController.IncreaseAge();
-                    if (animalController.IsOld())
-                    {
-                        animalsToRemove.Add(animal);
-                    }
                 }
             }
 
@@ -82,8 +78,6 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
-
 
     GameObject FindPartner(GameObject currentAnimal)
     {
@@ -109,6 +103,7 @@ public class GameController : MonoBehaviour
         return null;
     }
 
+
     public void SpawnOffspring(AnimalController.AnimalType type, Vector3 position, Genes genes)
     {
         GameObject animalPrefab = animalPrefabs[(int)type];
@@ -116,10 +111,5 @@ public class GameController : MonoBehaviour
         AnimalController animalController = offspring.GetComponent<AnimalController>();
         animalController.SetGenes(genes);
         animals.Add(offspring);
-    }
-
-    public void RemoveAnimal(GameObject animal)
-    {
-        animals.Remove(animal);
     }
 }

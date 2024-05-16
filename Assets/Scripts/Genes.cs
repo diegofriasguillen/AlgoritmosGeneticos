@@ -46,6 +46,7 @@ public class Genes
         );
     }
 
+    //allarevalues, entonces es la misma operación para everything
     private float MutateValue(float baseValue)
     {
         float mutationRate = 0.1f;
