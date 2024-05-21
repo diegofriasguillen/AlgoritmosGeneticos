@@ -7,8 +7,7 @@ public class GameController : MonoBehaviour
     public GameObject[] animalPrefabs;
     public Transform[] spawnPoints;
 
-    public float reproductionInterval = 15f;
-    public float maxAnimalAge = 100f;
+    public float reproductionInterval;
 
     private List<GameObject> animals = new List<GameObject>();
     public Transform[] reproductionPoints;

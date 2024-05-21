@@ -8,11 +8,11 @@ public class AnimalController : MonoBehaviour
     public AnimalType animalType;
     //health-age
     public float maxHealth = 100f;
-    public float maxAge = 100f;
+    public float maxAge;
     private float currentHealth;
     public float currentAge;
     //reproductionbaby
-    public float reproductionCooldown = 10f;
+    public float reproductionCooldown;
     private bool canReproduce = true;
     public float reproductionDistance = 1f;
     //referencesotherscripts
